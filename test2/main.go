@@ -38,7 +38,7 @@ func openWriteFile(name string) (io.WriteCloser, error) {
 	if err != nil {
 		return nil, err
 	}
-	log.Println("Save file " + name + fileNameSuffix)
+	log.Println("Create file " + name + fileNameSuffix)
 	return outputFile, nil
 }
 
@@ -66,7 +66,7 @@ func tryProcess(file os.DirEntry, inputDir, outputDir string) {
 		log.Println(err)
 		return
 	}
-	log.Println("found " + format + " image\n")
+	log.Println("found " + format + " image")
 
 	outputFile, err := openWriteFile(outputDir + "/" + file.Name())
 	if err != nil {
