@@ -57,7 +57,7 @@ func tryProcess(file os.DirEntry, inputDir, outputDir string) {
 	if file.IsDir() {
 		return
 	}
-	inputFile, err := openReadFile(inputDir + "/" + file.Name())
+	inputFile, err := openReadFile(inputDir + pathDelimiter + file.Name())
 	defer func() {
 		_ = inputFile.Close()
 	}()
@@ -68,7 +68,7 @@ func tryProcess(file os.DirEntry, inputDir, outputDir string) {
 	}
 	log.Println("found " + format + " image")
 
-	outputFile, err := openWriteFile(outputDir + "/" + file.Name())
+	outputFile, err := openWriteFile(outputDir + pathDelimiter + file.Name())
 	if err != nil {
 		log.Println(err)
 		return
