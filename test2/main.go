@@ -58,6 +58,10 @@ func tryProcess(file os.DirEntry, inputDir, outputDir string) {
 		return
 	}
 	inputFile, err := openReadFile(inputDir + pathDelimiter + file.Name())
+	if err != nil {
+		log.Println(err)
+		return
+	}
 	defer func() {
 		_ = inputFile.Close()
 	}()
